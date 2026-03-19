@@ -32,7 +32,7 @@ public class Sketch {
     return -1;
   }
   public int recursiveLinearSearch(int catNumToFind, int startIndex){
-    if (startIndex == store.length - 1) {
+    if (startIndex >= store.length - 1) {
       return -1;
     }
     if (store[startIndex].getCatNum() == catNumToFind) {
@@ -67,10 +67,10 @@ public class Sketch {
       return store[guess].getInventory();
     }
     else if (store[guess].getCatNum() > catNumToFind) {
-      return (recursiveBinarySearch(catNumToFind, guess + 1, nHigh));
+      return (recursiveBinarySearch(catNumToFind, nLow, guess - 1));
     }
     else {
-      return (recursiveBinarySearch(catNumToFind, nLow, guess - 1));
+      return (recursiveBinarySearch(catNumToFind, guess + 1, nHigh));
     }
   }
   public void tester(){
